@@ -1,9 +1,14 @@
-ProcessingInstruction.stdout.write('prompt > ');
+process.stdout.write("prompt > ");
 
-ProcessingInstruction.stdin.on('data', (data) => {
+const pwd = require("./pwd");
+
+process.stdin.on("data", data => {
   const cmd = data.toString().trim();
-
-  ProcessingInstruction.stdout.write('You typed: ' + cmd);
-  ProcessingInstruction.stdout.write('\nprompt > ');
-
-})
+  if (cmd === "pwd") {
+    pwd();
+  }
+  else {
+    process.stdout.write("You typed: " + cmd);
+  }
+  process.stdout.write("\nprompt > ");
+});
